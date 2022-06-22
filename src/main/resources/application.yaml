@@ -1,0 +1,38 @@
+server:
+  port: 8000
+---
+
+spring:
+  profiles: local
+  security:
+    user:
+      name: user
+      password: user
+      roles: manager
+server:
+  port: 8080
+
+---
+
+spring:
+  profiles: dev
+  security:
+    user:
+      name: user
+      password: user
+      roles: manager
+server:
+  port: 8081
+
+---
+
+spring:
+  profiles: prod
+  security:
+    user:
+      name: user
+      password: user
+      roles: manager
+server:
+  port: 8082
+
