@@ -1,38 +1,66 @@
-server:
-  port: 8000
----
-
 spring:
-  profiles: local
+  config:
+    activate:
+      on-profile: local
   security:
     user:
       name: user
       password: user
       roles: manager
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    driver-class-name: org.h2.Driver
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        hbm2ddl.auto: update
+    showSql: true
 server:
   port: 8080
-
 ---
-
 spring:
-  profiles: dev
+  config:
+    activate:
+      on-profile: dev
   security:
     user:
       name: user
       password: user
       roles: manager
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    driver-class-name: org.h2.Driver
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        hbm2ddl.auto: update
+    showSql: true
 server:
   port: 8081
-
 ---
-
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: prod
   security:
     user:
       name: user
       password: user
       roles: manager
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    driver-class-name: org.h2.Driver
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        hbm2ddl.auto: update
+    showSql: true
 server:
   port: 8082
 
