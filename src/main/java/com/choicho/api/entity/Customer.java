@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor // 인자없는 생성자를 자동으로 생성합니다.
 @AllArgsConstructor // 인자를 모두 갖춘 생성자를 자동으로 생성합니다.
 @Table(name = "customer") // 'customer' 테이블과 매핑됨을 명시
-public class User {
+public class Customer {
     @Id // primaryKey임을 알립니다.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //  pk생성전략을 DB에 위임한다는 의미입니다. mysql로 보면 pk 필드를 auto_increment로 설정해 놓은 경우로 보면 됩니다.

@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 //@EnableSwagger2
 @EnableWebMvc   // Failed to start bean 'documentationPluginsBootstrapper' nullpoint exception 을 위해서 어노테이션 추가
-                // 또는 spring.mvc.pathmatch.matching-strategy = ANT_PATH_MATCHER 를 properties에 넣어도 된다.
+// 또는 spring.mvc.pathmatch.matching-strategy = ANT_PATH_MATCHER 를 properties에 넣어도 된다.
 public class SwaggerConfiguration {
     @Bean
     public Docket swaggerApi() {
@@ -23,7 +23,7 @@ public class SwaggerConfiguration {
     }
 
     private ApiInfo swaggerInfo() {
-        return new ApiInfoBuilder().title("Spring API Documentation").description("앱 개발시 사용되는 서버 API에 대한 연동 문서입니다").license("chiocho").licenseUrl("http://choicho.net").version("1").build();
+        return new ApiInfoBuilder().title("ChoiCho APIs Documentation").description("ChoiCho에서 제공하는 API에 대한 연동 문서입니다").license("chiocho").licenseUrl("http://choicho.net").version("1").build();
     }
 }
 
