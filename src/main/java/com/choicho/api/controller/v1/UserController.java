@@ -2,26 +2,36 @@ package com.choicho.api.controller.v1;
 
 import com.choicho.api.entity.User;
 import com.choicho.api.repository.UserJpaRepo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+@Api(tags = {"1. User"})
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "v1")
+@RequestMapping(value = "/v1")
 public class UserController {
+
     private final UserJpaRepo userJpaRepo;
 
+    @ApiOperation(value = "회원 조회", notes = "모든 회원을 조회한다")
     @GetMapping(value = "/user")
     public List<User> findAllUser() {
         return userJpaRepo.findAll();
     }
 
+    @ApiOperation(value = "회원 입력", notes = "회원을 입력한다.")
     @PostMapping(value = "/user")
-    public User save(@RequestBody User user){  // 여기서 User는 Entity 니까 다른 object를 만들어서 사용하는게 좋다
-//        User user = User.builder().uid("jy0307@gmail.com").name("junyoung Choi").build();
+    public User save(@ApiParam(value = "회원아이디", required = true) @RequestParam String uid,
+                     @ApiParam(value = "회원이름", required = true) @RequestParam String name) {
+        User user = User.builder()
+                .uid(uid)
+                .name(name)
+                .build();
         return userJpaRepo.save(user);
     }
 }
